@@ -8,6 +8,22 @@
  */
 class Solution {
 public:
+    
+//     Brute Force Solution
+//     void deleteNode(ListNode* node) {
+//         ListNode* last;
+//         while(node->next!=NULL)
+//         {  
+//             last=node;
+//             node->val=node->next->val;
+//             node=node->next;
+//         }
+//         last->next=NULL;
+        
+//         node=NULL;
+//     }
+    
+    
     void deleteNode(ListNode* node) {
         ListNode* temp;
         

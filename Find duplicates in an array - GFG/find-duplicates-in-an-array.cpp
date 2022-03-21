@@ -34,7 +34,7 @@ class Solution{
         }
         for(int i=0;i<n;i++)
         {
-            if(arr[i] >= n*2)
+            if(arr[i] /n >1)
                 ans.push_back(i);
         }
         if(ans.size()!=0)

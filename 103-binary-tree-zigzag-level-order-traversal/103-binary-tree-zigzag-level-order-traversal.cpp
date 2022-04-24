@@ -13,47 +13,57 @@ class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
         vector<vector<int>> ans;
-        if(!root)
-            return ans;
-        TreeNode* temp;
+        if(!root) return ans;
+        stack<TreeNode*> s1,s2;
+        s1.push(root);
         
-        queue<TreeNode*> q;
-        q.push(root);
-        
-        int level=0;
-        
-        
-        while(!q.empty())
+        while(!s1.empty() || !s2.empty())
         {
-            
-            vector<int> levelWise;
-            int n=q.size();
-            
-            for(int i=0;i<n;i++)
+            vector<int> temp;
+            int count=0;
+            if(!s1.empty() && s2.empty())
             {
-                TreeNode* temp=q.front();
-                levelWise.push_back(temp->val);
-                if(temp->left)
-                    q.push(temp->left);
-                if(temp->right)
-                    q.push(temp->right);
+                count=s1.size();
+            }
+            while(count)
+            {
+                TreeNode* curr=s1.top();
+                temp.push_back(curr->val);
+                if(curr->left!=NULL)
+                    s2.push(curr->left);
+                if(curr->right!=NULL)
+                    s2.push(curr->right);
                 
-                q.pop();
+                s1.pop();
+                count--;
                 
             }
-            if(level%2==1)
+            ans.push_back(temp);
+            temp.clear();
+            
+            if(!s2.empty() && s1.empty())
             {
-                reverse(levelWise.begin(),levelWise.end());
+                count=s2.size();
             }
-            
-            level++;
-            ans.push_back(levelWise);
-            
-            
+            while(count)
+            {
+                TreeNode* curr=s2.top();
+                temp.push_back(curr->val);
+                if(curr->right!=NULL)
+                    s1.push(curr->right);
+                if(curr->left!=NULL)
+                    s1.push(curr->left);
+                
+                s2.pop();
+                count--;
+            }
+            if(!temp.empty())
+                ans.push_back(temp);
             
         }
         
         return ans;
+        
         
     }
 };

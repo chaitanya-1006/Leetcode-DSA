@@ -16,8 +16,8 @@ public:
         if(root==NULL)
             return new TreeNode(val);
         
-        if(curr->val==val)
-            return curr;
+        // if(curr->val==val)
+        //     return curr;
         else if(curr->val<val)
             curr->right=insertIntoBST(curr->right,val);
         else

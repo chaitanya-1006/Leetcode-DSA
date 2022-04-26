@@ -11,6 +11,8 @@
  */
 class Solution {
 public:
+    //this works only when the right child is not empty
+    // and we only want succ when the right child is not empty in BST deletion
     TreeNode* inorderSuccessor(TreeNode* curr)
     {
         curr=curr->right;

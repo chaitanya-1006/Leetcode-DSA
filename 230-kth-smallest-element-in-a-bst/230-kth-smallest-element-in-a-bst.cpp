@@ -11,30 +11,31 @@
  */
 class Solution {
 public:
-    int ans;
-    void Inorder(TreeNode* root, int &k,int &count)
+    // int ans;
+    int Inorder(TreeNode* root, int &k)
     {
-    //     if(!root)
-    //         return 0;
-        if(root->left!=NULL)
-             Inorder(root->left,k,count);
-        count+=1;
-        cout<<count;
-        if(count==k)
-        {
-            ans=root->val;
-            return;
-        }
-        if(root->right!=NULL)
-            Inorder(root->right,k,count);
+        stack<TreeNode*> st;
         
-        return;
+        while(true)
+        {
+            while(root!=NULL)
+            {
+                st.push(root);
+                root=root->left;
+            }
+            root=st.top();
+            st.pop();
+            if(--k==0) 
+                return root->val;
+            root=root->right;
+            
+        }
         
     }
     int kthSmallest(TreeNode* root, int k) {
-        int count=0;
-        Inorder(root,k,count);
-        return ans;
+        
+        return Inorder(root,k);
+        
         
     }
 };

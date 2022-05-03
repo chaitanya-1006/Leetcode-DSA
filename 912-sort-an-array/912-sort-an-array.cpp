@@ -29,29 +29,7 @@ public:
         
     }
     
-    int extractMax(vector<int>& nums)
-    {
-        if(size==0)
-            return INT_MAX;
-        if(size==1)
-        {
-            size--;
-            return nums[0];
-        }
-        swap(nums[0],nums[size--]);
-        maxHeapify(0,nums,size-1);
-        return nums[size];
-    }
-    
-    // void decreaseKey(int i,int val)
-    // {
-    //     nums[i]=val;
-    //     while(i!=0 && nums[parent(i)]>nums[i])
-    //     {
-    //         swap(nums[parent(i)],nums[i]);
-    //         i=parent(i);
-    //     }
-    // }
+
     
     
     void buildHeap(vector<int>& nums)
@@ -68,10 +46,9 @@ public:
         size=nums.size();
         buildHeap(nums);
         vector<int> ans;
-        // for(int i=0;i<size;i++)
-        // {
-        //     cout<<nums[i]<<" ";
-        // }
+      
+        // we are making 
+        
         for(int i=size-1;i>0;i--)
         {
             swap(nums[0],nums[i]);
